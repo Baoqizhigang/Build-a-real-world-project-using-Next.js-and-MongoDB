@@ -120,9 +120,7 @@
       "Coffee Maker"
     ],
     "rates": {
-      "nightly": 200,
-      "weekly": 750,
-      "monthly": 3300
+      "nightly": 200
     },
     "seller_info": {
       "name": "David Johnson",
