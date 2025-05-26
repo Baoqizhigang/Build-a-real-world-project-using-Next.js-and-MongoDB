@@ -3,7 +3,7 @@ import properties from "@/properties.json";
 
 const PropertiesPage = async () => {
   // wait 2 seconds
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  await new Promise((resolve) => setTimeout(resolve, 1000));
 
   return (
     <section className="px-4 py-6">
