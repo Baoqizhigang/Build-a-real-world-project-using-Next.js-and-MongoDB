@@ -1,9 +1,13 @@
 import PropertyCard from "@/components/PropertyCard";
-import properties from "@/properties.json";
+import connectDB from "@/config/database";
+import Property from "@/models/Property";
 
 const PropertiesPage = async () => {
-  // wait 2 seconds
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+  // wait 1 second
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+
+  await connectDB();
+  const properties = await Property.find({}).lean();
 
   return (
     <section className="px-4 py-6">
