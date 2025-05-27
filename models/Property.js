@@ -13,7 +13,7 @@ const PropertySchema = new Schema (
     },
     type: {
         type: String,
-        requried: true
+        required: true
     },
     description: {
         type: String,
@@ -34,7 +34,8 @@ const PropertySchema = new Schema (
     }, 
     square_feet: {
         type: Number,
-        required: true
+        required: true,
+        min: [0, 'Square footage must be non-negative']
     },
     amenities: [
         {
