@@ -11,7 +11,7 @@ import { get } from "mongoose";
 
 const Navbar = () => {
   const { data: session } = useSession();
-  console.log(session);
+  const profileImage = session?.user?.image;
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
@@ -166,7 +166,9 @@ const Navbar = () => {
                     <span className="sr-only">Open user menu</span>
                     <Image
                       className="h-8 w-8 rounded-full"
-                      src={profileDefault}
+                      src={profileImage || profileDefault}
+                      width={40}
+                      height={40}
                       alt=""
                     />
                   </button>
