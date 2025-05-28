@@ -11,10 +11,10 @@ import { get } from "mongoose";
 
 const Navbar = () => {
   const { data: session } = useSession();
+  console.log(session);
 
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false);
-
   const [providers, setProviders] = useState(null);
 
   const pathname = usePathname();
