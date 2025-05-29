@@ -1,7 +1,7 @@
 'use server';
 
-async function addProperty() {
-    console.log('addProperty action');
+async function addProperty(formData) {
+    console.log(formData.getAll('amenities'));
 }
 
 export default addProperty;
