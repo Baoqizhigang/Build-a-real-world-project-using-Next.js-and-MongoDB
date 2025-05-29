@@ -28,7 +28,7 @@ const PropertySchema = new Schema (
         type: Number,
         required: true
     }, 
-    bath: {
+    baths: {
         type: Number,
         required: true
     }, 
