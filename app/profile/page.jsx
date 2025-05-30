@@ -33,10 +33,12 @@ const ProfilePage = async () => {
               </div>
 
               <h2 className="text-2xl mb-4">
-                <span className="font-bold block">Name: </span> John Doe
+                <span className="font-bold block">Name: </span>{" "}
+                {sessionUser.user.name}
               </h2>
               <h2 className="text-2xl">
-                <span className="font-bold block">Email: </span> john@gmail.com
+                <span className="font-bold block">Email: </span>{" "}
+                {sessionUser.user.email}
               </h2>
             </div>
 
