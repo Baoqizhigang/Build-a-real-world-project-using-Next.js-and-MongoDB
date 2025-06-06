@@ -1,4 +1,4 @@
-"user client";
+"use client";
 import {
   FacebookShareButton,
   TwitterShareButton,
@@ -38,7 +38,7 @@ const ShareButtons = ({ property }) => {
           title={property.name}
           separator="::"
         >
-          <WhatsappShareIcon size={40} round={true} />
+          <WhatsappIcon size={40} round={true} />
         </WhatsappShareButton>
         <EmailShareButton
           url={shareUrl}
