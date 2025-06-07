@@ -14,9 +14,11 @@ const SearchResultsPage = async ({
 }) => {
   await connectDB(); // 连接 MongoDB 数据库，为后续查询做准备
 
-  // 创建正则表达式 locationPattern，基于 location 参数：
+  // const locationPattern：声明一个常量 locationPattern，用于存储创建的正则表达式对象。
+  // new RegExp(location, "i")：使用 JavaScript 的 RegExp 构造函数创建一个正则表达式对象。
   // location：用户输入的搜索字符串（如城市或街道名）。
   // "i"：忽略大小写（case-insensitive），例如 "New York" 和 "new york" 都匹配。
+  //locationPattern 是一个正则表达式对象，用于MongoDB 查询中匹配房产的字段（如 name, description, location.city 等）。
   const locationPattern = new RegExp(location, "i");
 
   // 定义 MongoDB 查询对象，使用 $or 运算符，匹配以下任一字段包含 location 的房产：
@@ -34,13 +36,19 @@ const SearchResultsPage = async ({
     ],
   };
 
+  // 如果 propertyType 存在且不为 "All"，添加 type 字段到查询，使用正则表达式匹配房产类型（忽略大小写）。
+  // 示例：propertyType = "Apartment" 匹配 type: /Apartment/i
   if (propertyType && propertyType !== "All") {
     const typePattern = new RegExp(propertyType, "i");
     query.type = typePattern;
   }
 
+  // 使用 Mongoose 的 find 方法执行查询，返回匹配的 Property 文档。
+  // lean()：将 Mongoose 文档转换为普通 JavaScript 对象，减少内存使用，提高性能（但失去 Mongoose 文档方法）。
   const propertiesQueryResults = await Property.find(query).lean();
+  // 将查询结果通过 convertToSerializableObject 转换为可序列化的对象，确保能在 Next.js 中传递给客户端组件或序列化到 JSON。
   const properties = convertToSerializableObject(propertiesQueryResults);
+  // 在服务器端打印查询结果，用于调试。
   console.log(properties);
 
   return (
